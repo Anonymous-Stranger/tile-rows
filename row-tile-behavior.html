@@ -1,0 +1,21 @@
+
+<script>
+	
+	var TileRows = TileRows ? TileRows : {};
+
+	TileRows.RowTileBehavior = {
+		
+		properties: {
+			size: {
+				type: String,
+				value: "md"
+			}
+		},
+
+		ready: function() {
+			this.toggleClass('row-tile');
+			this.toggleClass('row-tile-'+this.size);
+		}
+	};
+
+</script>

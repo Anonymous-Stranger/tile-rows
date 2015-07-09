@@ -1,0 +1,95 @@
+
+<link rel='import' href='../polymer/polymer.html'/>
+
+<dom-module id='tile-rows'>
+
+	<style>
+		
+		:host {
+			--row-tiles-justify: flex-start;
+			--row-tile-margin: 10px;
+
+			--row-tile-dim: 64px;
+			--row-tile-width: var(--row-tile-dim);
+			--row-tile-height: var(--row-tile-dim);
+
+			--row-tile-padding: 16px;
+
+			/*--row-tile-sm-w-1: (var(--row-tile-width) - var(--row-tile-margin)) / 2;*/
+			--row-tile-sm-w-1: var(--row-tile-width);
+
+			--row-tile-sm-w-2: 2 * var(--row-tile-sm-w-1) + var(--row-tile-margin);
+			--row-tile-sm-w-3: 3 * var(--row-tile-sm-w-1) + 2 * var(--row-tile-margin);
+			--row-tile-sm-w-4: 4 * var(--row-tile-sm-w-1) + 3 * var(--row-tile-margin);
+			--row-tile-sm-w-5: 5 * var(--row-tile-sm-w-1) + 4 * var(--row-tile-margin);
+
+			--row-tile-sm-w-1x: calc(var(--row-tile-sm-w-1));
+			--row-tile-sm-w-2x: calc(var(--row-tile-sm-w-2));
+			--row-tile-sm-w-3x: calc(var(--row-tile-sm-w-3));
+			--row-tile-sm-w-4x: calc(var(--row-tile-sm-w-4));
+			--row-tile-sm-w-5x: calc(var(--row-tile-sm-w-5));
+
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: var(--row-tiles-justify);
+
+			padding-left: var(--row-tile-margin);
+			padding-top: var(--row-tile-margin);
+		}
+
+		:host,
+		/deep/ .row-tile {
+			box-sizing: border-box;
+		}
+
+		/deep/ .row-tile {
+			display: inline-block;
+
+			max-width: 100%;
+			height: var(--row-tile-height);
+
+			float: left;
+
+			margin-right: var(--row-tile-margin);
+			margin-bottom: var(--row-tile-margin);
+		}
+
+		/deep/ .row-tile { /* Default size. */ 
+			width: var(--row-tile-sm-w-2x);
+		}
+
+		/deep/ .row-tile-sm {
+			width: var(--row-tile-sm-w-1x);
+		}
+
+		/deep/ .row-tile-md {
+			width: var(--row-tile-sm-w-2x);
+		}
+
+		/deep/ .row-tile-lg {
+			width: var(--row-tile-sm-w-3x);
+		}
+
+		/deep/ .row-tile-xl {
+			width: var(--row-tile-sm-w-4x);
+		}
+
+		/deep/ .row-tile-xx {
+			width: var(--row-tile-sm-w-5x);
+		}
+
+	</style>
+
+	<template>
+		<content></content>
+	</template>
+
+	<script>
+		Polymer({
+			
+			is: "tile-rows"
+
+		});
+	</script>
+
+</dom-module>

@@ -1,0 +1,26 @@
+{
+  "name": "tile-rows",
+  "version": "0.0.1",
+  "authors": [
+    "Akash Gaonkar <akashgaonkar@gmail.com>"
+  ],
+  "description": "A polymer web-component representing rows of tiles.",
+  "main": "tile-rows.html",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "tile-rows"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "../",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.0.5"
+  }
+}

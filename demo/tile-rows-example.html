@@ -1,0 +1,83 @@
+
+<link rel='import' href='../../polymer/polymer.html'/>
+
+<link rel='import' href='../tile-rows.html'/>
+<link rel='import' href='../row-tile.html'/>
+
+<dom-module id='tile-rows-example'>
+
+	<style is='custom-style'>
+
+		#rows {
+			--row-tile-dim: 120px;
+		}
+
+		row-tile {
+			background-color: crimson;
+
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		row-tile:nth-child(2n) {
+			background-color: forestgreen;
+		}
+
+		row-tile:nth-child(3n) {
+			background-color: skyblue;
+		}
+
+		row-tile:nth-child(4n) {
+			background-color: goldenrod;
+		}
+
+		row-tile:nth-child(5n) {
+			background-color: purple;
+		}
+
+	</style>
+
+	<template>
+		
+		<tile-rows id='rows'>
+			<template is='dom-repeat' items='{{items}}'>
+				<row-tile size='{{item.size}}'>{{item.size}}</row-tile>
+			</template>
+		</tile-rows>
+
+	</template>
+
+	<script>
+		Polymer({
+
+			is: "tile-rows-example",
+
+			ready: function() {
+				this.items = this.generateArray();
+			},
+
+			generateArray: function() {
+				var items = [];
+				var sizes = ["sm", "md", "lg", "xl", "xx"];
+
+				for (var i = 0; i < 100; i++) {
+
+					var tile = {};
+					
+					tile.value = i + 1;
+
+					tile.size = sizes[Math.floor(Math.random() * sizes.length)];
+
+					items.push(tile);
+
+				}
+
+				return items;
+
+			}
+
+		});
+	</script>
+
+</dom-module>
