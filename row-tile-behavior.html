@@ -8,13 +8,19 @@
 		properties: {
 			size: {
 				type: String,
-				value: "md"
+				value: "md",
+				observer: 'toggleSize'
 			}
 		},
 
 		ready: function() {
 			this.toggleClass('row-tile');
-			this.toggleClass('row-tile-'+this.size);
+		},
+
+		toggleSize: function() {
+			if (this.oldSize) this.toggleClass('row-tile-' + this.oldSize, false);
+			this.toggleClass('row-tile-' + this.size, true);
+			this.oldSize = this.size;
 		}
 	};
 

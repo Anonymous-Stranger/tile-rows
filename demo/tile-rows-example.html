@@ -41,8 +41,10 @@
 	<template>
 		
 		<tile-rows id='rows'>
-			<template is='dom-repeat' items='{{items}}'>
-				<row-tile size='{{item.size}}'>{{item.size}}</row-tile>
+			<template is='dom-repeat' items='{{tiles}}'>
+				<row-tile size='{{item.size}}' on-tap='updateTile'>
+					<div>{{item.size}}</div>
+				</row-tile>
 			</template>
 		</tile-rows>
 
@@ -53,28 +55,42 @@
 
 			is: "tile-rows-example",
 
-			ready: function() {
-				this.items = this.generateArray();
+			properties: {
+				sizes: {
+					type: Array,
+					value: ["sm", "md", "lg", "xl", "xx"]
+				}
 			},
 
-			generateArray: function() {
-				var items = [];
-				var sizes = ["sm", "md", "lg", "xl", "xx"];
+			ready: function() {
+				this.tiles = this.generateTiles();
+			},
+
+			generateTiles: function() {
+				var tiles = [];
 
 				for (var i = 0; i < 100; i++) {
 
-					var tile = {};
-					
-					tile.value = i + 1;
+					var tile = {}
 
-					tile.size = sizes[Math.floor(Math.random() * sizes.length)];
+					tile.sizeLoc = Math.floor(Math.random() * this.sizes.length);
 
-					items.push(tile);
+					tile.size = this.sizes[tile.sizeLoc];
+
+					tiles.push(tile);
 
 				}
 
-				return items;
+				return tiles;
+			},
 
+			updateTile: function(evt) {
+				var sizeLoc = evt.model.item.sizeLoc;
+				
+				sizeLoc = (sizeLoc + 1) % this.sizes.length;
+				
+				evt.model.set("item.sizeLoc", sizeLoc);
+				evt.model.set("item.size", this.sizes[sizeLoc]);
 			}
 
 		});
